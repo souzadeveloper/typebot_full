@@ -2,4 +2,4 @@ FROM nginx:latest
 
 COPY ./conf /etc/nginx/conf.d/
 
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils

@@ -93,19 +93,18 @@ services:
       - "80:80"
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 12h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-    entrypoint: ./docker-entrypoint.sh nginx -g "daemon off;"
     volumes:
-    - ./nginx/conf:/etc/nginx/conf.d
-    - ./certbot_data/conf:/etc/letsencrypt
-    - ./certbot_data/www:/var/www/certbot    
+    - ./nginx/conf:/etc/nginx/conf.d:ro
+    - ./certbot_data/conf:/etc/letsencrypt:ro
+    - ./certbot_data/www:/var/www/certbot:ro
 
   certbot:
-    image: certbot/certbot 
+    image: certbot/certbot
     container_name: certbot
     restart: unless-stopped
     volumes:
-    - ./certbot_data/conf:/etc/letsencrypt
-    - ./certbot_data/www:/var/www/certbot 
+    - ./certbot_data/conf:/etc/letsencrypt:rw
+    - ./certbot_data/www:/var/www/certbot:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 24h & wait $${!}; done;'"
 
 volumes:
