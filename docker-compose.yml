@@ -84,13 +84,16 @@ services:
       "
 
   nginx:
-    image: nginx:1.15-alpine
+    #image: nginx:1.15-alpine
+    build: 
+      context: nginx
     restart: unless-stopped
     container_name: nginx
     ports:
       - "80:80"
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 12h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    entrypoint: ./docker-entrypoint.sh nginx -g "daemon off;"
     volumes:
     - ./nginx/conf:/etc/nginx/conf.d
     - ./certbot_data/conf:/etc/letsencrypt
