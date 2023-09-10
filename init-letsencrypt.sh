@@ -5,7 +5,9 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(refactorsistemas.com.br chat.refactorsistemas.com.br evolution.refactorsistemas.com.br minio.refactorsistemas.com.br n8n.refactorsistemas.com.br storage.refactorsistemas.com.br typebot.refactorsistemas.com.br)
+domains=(refactorsistemas.com.br)
+
+# chat.refactorsistemas.com.br evolution.refactorsistemas.com.br minio.refactorsistemas.com.br n8n.refactorsistemas.com.br storage.refactorsistemas.com.br typebot.refactorsistemas.com.br
 
 rsa_key_size=4096
 data_path="./certbot_data"
