@@ -11,7 +11,7 @@ domains=(
   evolution.refactorsistemas.com.br 
   minio.refactorsistemas.com.br 
   n8n.refactorsistemas.com.br 
-  storage.refactorsistemas.com.br 
+  s3.refactorsistemas.com.br 
   typebot.refactorsistemas.com.br)
 
 rsa_key_size=4096
