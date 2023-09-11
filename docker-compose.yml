@@ -84,9 +84,9 @@ services:
       "
 
   nginx:
-    image: nginx:latest
-    # build: 
-    #   context: nginx
+    #image: nginx:latest
+    build: 
+      context: nginx
     restart: unless-stopped
     container_name: nginx
     ports:
@@ -94,9 +94,9 @@ services:
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 12h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
-    - ./nginx/conf:/etc/nginx/conf.d:ro
-    - ./certbot_data/conf:/etc/letsencrypt:ro
-    - ./certbot_data/www:/var/www/certbot:ro
+    - ./nginx/conf:/etc/nginx/conf.d:rw
+    - ./certbot_data/conf:/etc/letsencrypt:rw
+    - ./certbot_data/www:/var/www/certbot:rw
 
   certbot:
     image: certbot/certbot
