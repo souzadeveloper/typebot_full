@@ -21,7 +21,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://postgres:typebot@typebot-db:5432/typebot
       - NEXTAUTH_URL=https://typebot.refactorsistemas.com.br
-      - NEXT_PUBLIC_VIEWER_URL=https://chat.refactorsistemas.com.br
+      - NEXT_PUBLIC_VIEWER_URL=https://bot.refactorsistemas.com.br
       - ENCRYPTION_SECRET=2PVq+hzRRCWKTqHebJyssH3FeMPb9jkm
       - ADMIN_EMAIL=souzadeveloper@gmail.com
       - SMTP_SECURE=true
@@ -43,7 +43,7 @@ services:
     restart: always
     environment:
       - DATABASE_URL=postgresql://postgres:typebot@typebot-db:5432/typebot
-      - NEXT_PUBLIC_VIEWER_URL=https://chat.refactorsistemas.com.br
+      - NEXT_PUBLIC_VIEWER_URL=https://bot.refactorsistemas.com.br
       - ENCRYPTION_SECRET=2PVq+hzRRCWKTqHebJyssH3FeMPb9jkm
       - S3_ACCESS_KEY=minio
       - S3_SECRET_KEY=Minio@891063
@@ -84,9 +84,9 @@ services:
       "
 
   nginx:
-    #image: nginx:latest
-    build: 
-      context: nginx
+    image: nginx:1.24-alpine
+    # build: 
+    #   context: nginx
     restart: unless-stopped
     container_name: nginx
     ports:

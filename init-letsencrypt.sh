@@ -7,12 +7,13 @@ fi
 
 domains=(
   refactorsistemas.com.br
-  chat.refactorsistemas.com.br 
-  evolution.refactorsistemas.com.br 
-  minio.refactorsistemas.com.br 
-  n8n.refactorsistemas.com.br 
-  s3.refactorsistemas.com.br 
-  typebot.refactorsistemas.com.br)
+  typebot.refactorsistemas.com.br
+  bot.refactorsistemas.com.br
+  evolution.refactorsistemas.com.br
+  minio.refactorsistemas.com.br
+  s3.refactorsistemas.com.br
+  n8n.refactorsistemas.com.br
+)
 
 rsa_key_size=4096
 data_path="./certbot_data"
