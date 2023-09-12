@@ -2,7 +2,7 @@ version: '3.3'
 services:
   typebot-db:
     image: postgres:13
-    container_name: postgres
+    container_name: typebot-db
     restart: always
     volumes:
       - db_data:/var/lib/postgresql/data

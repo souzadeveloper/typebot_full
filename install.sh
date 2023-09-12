@@ -18,7 +18,7 @@ domains=(
 rsa_key_size=4096
 data_path="./certbot_data"
 email="souzadeveloper@gmail.com" # Adding a valid address is strongly recommended
-staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
+staging=1 # Set to 1 if you're testing your setup to avoid hitting request limits
 
 if [ -d "$data_path" ]; then
   read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
@@ -45,7 +45,10 @@ docker-compose run --rm --entrypoint "\
     -subj '/CN=localhost'" certbot
 echo
 
-echo "### Starting nginx ..."
+echo "### Starting Containers ..."
+docker-compose up -d typebot-builder
+docker-compose up -d typebot-viewer
+docker-compose up -d minio
 docker-compose up --force-recreate -d nginx
 echo
 
@@ -84,3 +87,4 @@ echo
 
 echo "### Reloading nginx ..."
 docker-compose exec nginx nginx -s reload
+docker-compose up -d
