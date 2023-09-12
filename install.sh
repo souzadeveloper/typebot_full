@@ -9,9 +9,9 @@ domains=(
   refactorsistemas.com.br
   typebot.refactorsistemas.com.br
   bot.refactorsistemas.com.br
-  evolution.refactorsistemas.com.br
   minio.refactorsistemas.com.br
   s3.refactorsistemas.com.br
+  evolution.refactorsistemas.com.br
   n8n.refactorsistemas.com.br
 )
 

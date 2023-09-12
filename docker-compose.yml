@@ -80,8 +80,8 @@ services:
 
   nginx:
     image: nginx:1.24-alpine
-    restart: unless-stopped
     container_name: nginx
+    restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
@@ -95,10 +95,10 @@ services:
     image: certbot/certbot
     container_name: certbot
     restart: unless-stopped
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 24h & wait $${!}; done;'"
     volumes:
     - ./certbot_data/conf:/etc/letsencrypt:rw
     - ./certbot_data/www:/var/www/certbot:rw
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 24h & wait $${!}; done;'"
 
 volumes:
   db_data:
