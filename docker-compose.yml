@@ -50,11 +50,6 @@ services:
       - S3_BUCKET=typebot
       - S3_ENDPOINT=s3.refactorsistemas.com.br
 
-  mail:
-    image: bytemark/smtp
-    container_name: mail
-    restart: always
-
   minio:
     image: quay.io/minio/minio
     container_name: minio
@@ -85,8 +80,6 @@ services:
 
   nginx:
     image: nginx:1.24-alpine
-    # build: 
-    #   context: nginx
     restart: unless-stopped
     container_name: nginx
     ports:
